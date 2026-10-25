@@ -1,0 +1,90 @@
+openapi: 3.1.0
+info:
+  title: Meticulous Ai API
+  version: '2026-10-25'
+  description: 'GENERATED FROM DOCUMENTATION by API Evangelist on 2026-10-25: 4 operation(s) read from 6 public documentation page(s) (each operation
+    names its page in x-source). This is not the provider''s published contract; Meticulous Ai has published no machine-readable contract that
+    the pipeline could find. Engine: local.'
+  x-evidence-tiers:
+    code-example: 2
+    documentation: 2
+    pages-with-code: 4
+    pages-read: 6
+  x-generated-from: documentation
+  x-provenance: generated
+  x-authored-by: API Evangelist
+  x-generated: '2026-10-25'
+  x-generator: generate-contract-from-docs.py
+  x-engine: local
+  x-sources:
+  - https://app.meticulous.ai/docs/reference/cli-commands
+  - https://app.meticulous.ai/docs/reference/cli-commands.md
+  - https://app.meticulous.ai/docs/reference/performance-api
+  - https://app.meticulous.ai/docs/reference/performance-api.md
+  - https://app.meticulous.ai/docs/how-to/handle-file-uploads
+  - https://app.meticulous.ai/docs/how-to/handle-file-uploads.md
+paths:
+  /:
+    get:
+      operationId: get
+      tags:
+      - Api
+      summary: GET /
+      x-source: https://app.meticulous.ai/docs/reference/cli-commands
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: 'curl http://localhost:3000 Check port in --appUrl matches actual port Increase wait time before running command "No sessions
+          found" Cause : No recorded sessions for project Solution : Record sessions first (add recorder snippet to app) "Tunnel connection failed"
+          Cause : Network/firewall issue Solutions : Check outbound HTTPS (443) is allowed Try --printRequests to debug Contact support if persists'
+  /api/file/{fileId}:
+    get:
+      operationId: get_api_file_fileId
+      tags:
+      - Api
+      summary: Requests like POST /api/upload or GET /api/file/123 will replay with the exact responses that were captured during recording.
+      x-source: https://app.meticulous.ai/docs/how-to/handle-file-uploads
+      parameters:
+      - name: fileId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: documentation
+  /api/upload:
+    post:
+      operationId: post_api_upload
+      tags:
+      - Api
+      summary: Requests like POST /api/upload or GET /api/file/123 will replay with the exact responses that were captured during recording.
+      x-source: https://app.meticulous.ai/docs/how-to/handle-file-uploads
+      responses:
+        '201':
+          description: Success (status as documented)
+      x-evidence:
+        kind: documentation
+  /metrics:
+    post:
+      operationId: post_metrics
+      tags:
+      - Metrics
+      summary: POST /metrics
+      x-source: https://app.meticulous.ai/docs/reference/performance-api
+      responses:
+        '201':
+          description: Success (status as documented)
+      x-evidence:
+        kind: code-example
+        language: javascript
+        snippet: "fetch ( \"https://analytics.example.com/metrics\" , { \n method : \"POST\" , \n headers : { \n \"Content-Type\" : \"application/json\"\
+          \ , \n \"meticulous-passthrough\" : \"true\" , \n } , \n body : JSON . stringify ( payload ) , \n } )"
+tags:
+- name: Api
+- name: Metrics

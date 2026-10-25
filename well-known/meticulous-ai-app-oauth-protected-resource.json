@@ -1,0 +1,1 @@
+{"resource":"https://app.meticulous.ai/api/mcp","authorization_servers":["https://app.meticulous.ai/auth/realms/meticulous"],"scopes_supported":["openid","email","profile","offline_access"],"bearer_methods_supported":["header"],"resource_name":"Meticulous Agent MCP (meticulous-cli)"}

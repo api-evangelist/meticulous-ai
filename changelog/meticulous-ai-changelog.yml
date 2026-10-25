@@ -1,0 +1,28 @@
+generated: '2026-10-25'
+method: searched
+generator: extract-docs-artifacts.py (local)
+source: https://app.meticulous.ai/docs/agents/whats-new.md
+sources:
+- https://app.meticulous.ai/docs/agents/whats-new.md
+- https://app.meticulous.ai/docs/agents/whats-new
+entries:
+- breaking: true
+  highlights:
+  - '`meticulous agent approve-check` and `reject-check` are removed: agents can now only ignore a failing check, with `ignore-check`.'
+  date: '2026-10-22'
+- breaking: false
+  highlights:
+  - '`timeline-diff` now pairs base and head events by what they are — user events on the recorded event they simulate, screenshots by name, network
+    requests per URL in time order — instead of one hash for everything.'
+  - 'A user event''s description shows its match confidence or failure reason (`click on (conf: 0.92) button.save`), and a click whose match changed
+    is a single `changed` row with the reason (`success -> failed`, `confidence 0.86 -> 0.99`).'
+  - Every row carries a stable `eventId`, which `timeline-event` expands into the full details of that one event, and `timeline-event-diff` into
+    the details that differ between the two replays.
+  date: '2026-10-22'
+- breaking: false
+  highlights:
+  - '`meticulous agent agent-swarm-setup-blockers` adds a `fallbackOutcome` column: when a flow blocked by the test environment is retried automatically
+    with mocked API responses, it shows how that retry ended, or is empty when the flow was not retried.'
+  date: '2026-10-20'
+note: The pages list changelog entries by date only and do not provide a versioning scheme or explicit version numbers, so those fields are absent.
+docs: https://app.meticulous.ai/docs/agents/whats-new.md

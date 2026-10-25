@@ -1,0 +1,6 @@
+generated: '2026-10-25'
+method: probed
+generator: harvest-llms.py
+source: https://app.meticulous.ai/llms.txt
+bytes: 10881
+note: saved verbatim; the provider's own document

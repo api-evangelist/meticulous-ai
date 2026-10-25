@@ -1,25 +1,104 @@
 aid: meticulous-ai
+
 name: Meticulous Ai
-description: 'Meticulous Ai is a company surfaced via the API Evangelist harvest backlog (source: vc-portfolio;
-  backed by coatue) and added to the network as a stub for full-pipeline profiling.'
+
+image: https://www.meticulous.ai/images/social-graph-image.png
+
+description: 'Meticulous AI provides an automated frontend testing platform that generates and maintains visual browser tests without writing code. It captures user sessions, detects visual regressions, and offers deterministic, exhaustive verification for complex codebases, helping teams ship faster with zero developer effort.'
+
 url: https://raw.githubusercontent.com/api-evangelist/meticulous-ai/refs/heads/main/apis.yml
+
 x-type: company
+
 x-source: harvest:vc-portfolio
-x-tier: stub
-x-tier-reason: harvest
+
+x-tier: profiled
+x-tier-reason: enrichment pass 2026-10-25 (modular-v1; was harvest)
+
 specificationVersion: '0.20'
+
 created: '2026-10-25'
+
 modified: '2026-10-25'
+
 tags:
 - Company
-apis: []
+- Testing
+- Automation
+- Frontend
+- VisualRegression
+
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
-x-backed-by:
-- coatue
+
 common:
+- type: Spectral
+  url: rules/meticulous-ai-rules.yml
+- type: Vocabulary
+  url: vocabulary/meticulous-ai-vocabulary.yml
+- type: CLI
+  url: cli/meticulous-ai-cli.yml
+- type: ChangeLog
+  url: changelog/meticulous-ai-changelog.yml
+- type: Conformance
+  url: conformance/meticulous-ai-conformance.yml
+- type: LLMsTxt
+  url: llms/meticulous-ai-llms.txt
+- type: WellKnown
+  url: well-known/meticulous-ai-well-known.yml
+- type: Hosts
+  url: hosts/meticulous-ai-hosts.yml
+- type: Vendors
+  url: vendors/meticulous-ai-vendors.yml
+- type: Newsroom
+  url: https://www.meticulous.ai/blog-categories/news
+- type: ChangeLog
+  url: https://app.meticulous.ai/changelog
+- type: APIReference
+  url: https://app.meticulous.ai/docs/reference/cli-commands
+- type: DomainSecurity
+  url: security/meticulous-ai-domain-security.yml
 - type: Website
   url: https://www.meticulous.ai/
+- type: Blog
+  url: https://www.meticulous.ai/blog
+- type: Documentation
+  url: https://www.meticulous.ai/how-it-works
+- type: GettingStarted
+  url: https://www.meticulous.ai/book-a-demo
+- type: TermsOfService
+  url: https://www.meticulous.ai/terms-conditions
+- type: PrivacyPolicy
+  url: https://www.meticulous.ai/privacy-policy
+
+apis:
+- aid: meticulous-ai:meticulous-ai-api
+  name: Meticulous Ai API
+  description: 'Meticulous Ai API as documented publicly: 4 operations. Contract generated from the documentation by API Evangelist (2026-10-25);
+    not the provider''s own document.'
+  humanURL: https://app.meticulous.ai/docs/reference/cli-commands
+  properties:
+  - type: OpenAPI
+    url: openapi/_ae-authored/meticulous-ai-openapi-generated.yml
+    x-provenance: generated
+
+x-backed-by:
+- coatue
+
+x-coverage:
+  state: unreadable
+  reason: js-rendered-docs
+  detail: The provider's website is a JavaScript‑rendered single‑page app with no machine‑readable API specification discovered.
+  evidence:
+    - url: https://www.meticulous.ai/
+      status: 200
+  checked: '2026-10-25'
+x-enrichment:
+  date: '2026-10-25'
+  status: enriched
+  artifacts_added: 18
+  pass: modular-v1
+  engine: identity=local,contract=local,surfaces=local,docs=local,regulatory=local

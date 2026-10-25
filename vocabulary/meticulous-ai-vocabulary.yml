@@ -1,0 +1,20 @@
+generated: '2026-10-25'
+method: derived
+generator: derive-vocabulary.py
+source: openapi/_ae-authored/meticulous-ai-openapi-generated.yml
+vocabulary:
+  name: Meticulous Ai Domain Vocabulary
+  description: 'Terms declared by Meticulous Ai''s own API contract: its resource groups, objects and enumerations, with the contract''s definitions.
+    Derived, not authored.'
+  version: '2026-10-25'
+  terms:
+  - term: Api
+    definition: 'Resource group in the contract; its operation GET /: GET /'
+    tags:
+    - Resource Group
+    source: openapi/_ae-authored/meticulous-ai-openapi-generated.yml
+  - term: Metrics
+    definition: 'Resource group in the contract; its operation POST /metrics: POST /metrics'
+    tags:
+    - Resource Group
+    source: openapi/_ae-authored/meticulous-ai-openapi-generated.yml

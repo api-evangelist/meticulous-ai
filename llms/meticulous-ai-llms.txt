@@ -1,0 +1,134 @@
+# Meticulous
+
+> Meticulous records real user sessions from a web app and replays them against
+> each commit to catch visual regressions. Results are visual diffs: pairs of
+> screenshots plus DOM, network and timeline data for each replay.
+
+## Project setup
+
+To integrate Meticulous into a repository, follow the [Project setup guide](https://app.meticulous.ai/docs/project-setup.md).
+It covers recorder installation, skills and MCP, CI configuration, and verification.
+
+## Accessing Meticulous results from a coding agent
+
+Meticulous results show how a code change actually affects the UI. Check them
+when reviewing a pull request, after pushing frontend changes, before calling a
+pull request done, and whenever the Meticulous CI check fails or is pending.
+
+The web app at https://app.meticulous.ai needs a browser login and presents
+results as images, so it isn't agent-friendly. Use the CLI or MCP instead — they
+expose the same test runs, diffs and screenshots as text and downloadable files.
+Links to the web app still carry the IDs to pass them, e.g.
+`/projects/<organization>/<project>/test-runs/<testRunId>`.
+
+This section is for reading and reviewing results after project setup; it is not
+the guide for installing Meticulous into an application.
+
+CLI / MCP / skills instructions: https://app.meticulous.ai/docs/agents/setup-for-agents.md
+
+Quick start:
+
+- MCP server: https://app.meticulous.ai/api/mcp (if one is already connected, use it)
+- CLI: `npm install --global @alwaysmeticulous/cli@latest`, then
+  `meticulous auth login --non-interactive` (or `meticulous auth login --device`
+  on a remote or sandboxed machine). `meticulous agent --help` explains when and
+  how to use the commands.
+- Skills (pre-written workflows, including `meticulous-review` and
+  `meticulous-fix`): `npx skills add alwaysmeticulous/skills --skill "*" --agent claude-code --agent codex --agent cursor -y`
+
+Without the skills, start from the diffs with their review state
+(`meticulous agent test-run-diffs --includeReviews`, or MCP
+`get_test_run_diffs` with `includeReviews`). Investigate unreviewed diffs —
+images, DOM diff, timeline — before rejecting, ignoring or approving them; for
+rejected or commented diffs, fix the issue and reply on the thread.
+
+## Reading the docs as markdown
+
+Every documentation page is also served as `text/markdown`: append `.md` to
+its URL (for example `/docs/ci.md`, or `/docs.md` for the overview). The
+links below already point at those markdown URLs.
+
+## Docs
+
+- [Getting Started with Meticulous](https://app.meticulous.ai/docs.md)
+- [Meticulous Onboarding Guide](https://app.meticulous.ai/docs/onboarding-guide.md)
+- [Get started with Meticulous Recorder](https://app.meticulous.ai/docs/recorder-installation.md)
+- [Setting up Meticulous to test your pull requests](https://app.meticulous.ai/docs/ci.md)
+- [Setting up Meticulous tests to run in your CI provider](https://app.meticulous.ai/docs/github-actions-v2.md)
+- [Require approving diffs before merging a PR](https://app.meticulous.ai/docs/make-check-blocking.md)
+- [Running tests against existing deployment URLs](https://app.meticulous.ai/docs/cloud-replay.md)
+- [FAQ & Troubleshooting](https://app.meticulous.ai/docs/faq-and-troubleshooting.md)
+- [Additional Guides](https://app.meticulous.ai/docs/additional-guides.md)
+- [Getting Started with Backend Testing](https://app.meticulous.ai/docs/additional-guides/getting-started-backend-testing.md)
+- [Install the Meticulous recorder via a script tag](https://app.meticulous.ai/docs/additional-guides/recorder-script-backend-testing.md)
+- [Install the backend recorder](https://app.meticulous.ai/docs/additional-guides/backend-recorder.md)
+- [Architecture Overview](https://app.meticulous.ai/docs/concepts/architecture-overview.md)
+- [Network Recording & Patching](https://app.meticulous.ai/docs/concepts/network-recording-and-patching.md)
+- [Glossary](https://app.meticulous.ai/docs/concepts/glossary.md)
+- [Selecting Which Sessions to Run](https://app.meticulous.ai/docs/how-to/testing-pool.md)
+- [Install the Meticulous recorder via a script tag](https://app.meticulous.ai/docs/how-to/recorder-script.md)
+- [Manually Recording a Test](https://app.meticulous.ai/docs/how-to/manually-recording-tests.md)
+- [Detecting Diffs Locally](https://app.meticulous.ai/docs/how-to/detect-diffs-locally.md)
+- [Ensuring Base Test Runs are Available](https://app.meticulous.ai/docs/how-to/prepare-for-tests.md)
+- [window.Meticulous API Reference](https://app.meticulous.ai/docs/how-to/window-meticulous-object.md)
+- [TypeScript Types for window.Meticulous](https://app.meticulous.ai/docs/how-to/typescript-types.md)
+- [Testing Multiple Apps or App Variants](https://app.meticulous.ai/docs/how-to/testing-multiple-apps-or-app-variants.md)
+- [Testing Feature Flags with Meticulous](https://app.meticulous.ai/docs/how-to/testing-feature-flags.md)
+- [Troubleshoot issues when recording on one environment and simulating on another](https://app.meticulous.ai/docs/how-to/record-and-replay-on-different-environments.md)
+- [Fix False Positive Diffs](https://app.meticulous.ai/docs/how-to/fix-false-positive-diffs.md)
+- [Recording custom values to use when replaying user sessions](https://app.meticulous.ai/docs/how-to/record-custom-values.md)
+- [Recording the context of a user session](https://app.meticulous.ai/docs/how-to/record-session-context.md)
+- [Ignoring URL patterns](https://app.meticulous.ai/docs/how-to/ignore-url-patterns.md)
+- [Troubleshoot Authentication & Authorisation Issues](https://app.meticulous.ai/docs/how-to/troubleshoot-auth.md)
+- [Troubleshoot Recorder](https://app.meticulous.ai/docs/how-to/troubleshoot-recorder.md)
+- [Troubleshoot Simulation Accuracy](https://app.meticulous.ai/docs/how-to/troubleshoot-replay-accuracy.md)
+- [Troubleshoot Comparisons Against an Older Commit](https://app.meticulous.ai/docs/how-to/troubleshoot-older-base-commit.md)
+- [Troubleshoot Failed or Inaccurate Simulations](https://app.meticulous.ai/docs/how-to/troubleshoot-failed-simulations.md)
+- [Ensuring the recorder captures early network requests](https://app.meticulous.ai/docs/how-to/ensure-recorder-captures-all-requests.md)
+- [Viewing source coverage information in Meticulous](https://app.meticulous.ai/docs/how-to/enable-source-coverage.md)
+- [Blocking Requests During Replay](https://app.meticulous.ai/docs/how-to/blocked-requests.md)
+- [Configuring Ignore Patterns for Coverage](https://app.meticulous.ai/docs/how-to/configure-ignore-patterns.md)
+- [Built-in checks](https://app.meticulous.ai/docs/built-in-checks.md)
+- [Accessibility](https://app.meticulous.ai/docs/built-in-checks/accessibility.md)
+- [Network requests](https://app.meticulous.ai/docs/built-in-checks/network-requests.md)
+- [React component renders](https://app.meticulous.ai/docs/built-in-checks/react-component-renders.md)
+- [Custom checks](https://app.meticulous.ai/docs/custom-checks.md)
+- [Writing a custom check](https://app.meticulous.ai/docs/custom-checks/writing-a-custom-check.md)
+- [Recording custom snapshots](https://app.meticulous.ai/docs/custom-checks/recording-custom-data.md)
+- [Built-in snapshot types](https://app.meticulous.ai/docs/custom-checks/built-in-snapshot-types.md)
+- [Best practices](https://app.meticulous.ai/docs/custom-checks/best-practices.md)
+- [Handle file uploads](https://app.meticulous.ai/docs/how-to/handle-file-uploads.md)
+- [Companion Assets (Advanced)](https://app.meticulous.ai/docs/how-to/companion-assets-advanced.md)
+- [Incremental Asset Upload](https://app.meticulous.ai/docs/how-to/incremental-asset-upload.md)
+- [Filter Sessions by Start URL](https://app.meticulous.ai/docs/how-to/filter-sessions-by-start-url.md)
+- [Retry a test run](https://app.meticulous.ai/docs/how-to/retry-test-run.md)
+- [Setting up Okta SSO for Meticulous](https://app.meticulous.ai/docs/how-to/setup-okta-sso.md)
+- [Using the Custom Event API](https://app.meticulous.ai/docs/how-to/use-custom-event-api.md)
+- [Recorder Developer Tools](https://app.meticulous.ai/docs/how-to/recorder-developer-tools.md)
+- [Enabling Meticulous to replay sessions fully authenticated](https://app.meticulous.ai/docs/how-to/auth/enabling-full-auth.md)
+- [Bypassing Auth](https://app.meticulous.ai/docs/how-to/auth/bypassing-auth.md)
+- [Set up session recording using an NPM dependency](https://app.meticulous.ai/docs/session-recording/recorder-npm-dependency.md)
+- [Ingest Existing Tests](https://app.meticulous.ai/docs/session-recording/ingest-existing-tests.md)
+- [Controlling the data recorded by the Meticulous recorder](https://app.meticulous.ai/docs/session-recording/controlling-data-recorded.md)
+- [Controlling when recording starts and stops](https://app.meticulous.ai/docs/session-recording/controlling-when-recording-starts-and-stops.md)
+- [Content Security Policy (CSP) exceptions for the recorder snippet](https://app.meticulous.ai/docs/session-recording/csp-exceptions.md)
+- [Redacting/filtering data before it leaves the browser](https://app.meticulous.ai/docs/session-recording/redaction.md)
+- [Next.js App Router - Complete Setup Guide](https://app.meticulous.ai/docs/frameworks/nextjs/app-router.md)
+- [Next.js Pages Router - Complete Setup Guide](https://app.meticulous.ai/docs/frameworks/nextjs/pages-router.md)
+- [React with Vite - Complete Setup Guide](https://app.meticulous.ai/docs/frameworks/react/vite.md)
+- [Create React App - Complete Setup Guide](https://app.meticulous.ai/docs/frameworks/react/create-react-app.md)
+- [Vue 3 with Vite - Complete Setup Guide](https://app.meticulous.ai/docs/frameworks/vue/vite.md)
+- [Angular - Complete Setup Guide](https://app.meticulous.ai/docs/frameworks/angular/angular-cli.md)
+- [Trigger the Meticulous tests by manually creating deployments on GitHub](https://app.meticulous.ai/docs/alternative-ci-setups/create-deployments-on-github.md)
+- [Exporting generated tests](https://app.meticulous.ai/docs/export/exporting-generated-tests.md)
+- [Create Meticulous check in 'success' state until tests start running](https://app.meticulous.ai/docs/ci/not-yet-run-checks.md)
+- [Setting up Meticulous for agents](https://app.meticulous.ai/docs/agents/setup.md)
+- [Meticulous for coding agents](https://app.meticulous.ai/docs/agents/setup-for-agents.md)
+- [Set up Agent swarm](https://app.meticulous.ai/docs/agents/agent-swarm.md)
+- [What's new](https://app.meticulous.ai/docs/agents/whats-new.md)
+- [CLI commands for agents](https://app.meticulous.ai/docs/agents/cli-commands.md)
+- [MCP server for agents](https://app.meticulous.ai/docs/agents/mcp-server.md)
+- [Skills & Use cases](https://app.meticulous.ai/docs/agents/skills.md)
+- [CLI Commands Reference](https://app.meticulous.ai/docs/reference/cli-commands.md)
+- [Environment Variables Reference](https://app.meticulous.ai/docs/reference/environment-variables.md)
+- [Performance API Reference](https://app.meticulous.ai/docs/reference/performance-api.md)

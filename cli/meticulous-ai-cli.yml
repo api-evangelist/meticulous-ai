@@ -1,0 +1,114 @@
+generated: '2026-10-25'
+method: searched
+generator: extract-docs-artifacts.py (local)
+source: https://app.meticulous.ai/docs/how-to/recorder-developer-tools.md
+sources:
+- https://app.meticulous.ai/docs/how-to/recorder-developer-tools.md
+- https://app.meticulous.ai/docs/frameworks/angular/angular-cli.md
+- https://app.meticulous.ai/docs/agents/cli-commands.md
+- https://app.meticulous.ai/docs/reference/cli-commands.md
+install:
+- method: npm global install
+  command: npm install --global @alwaysmeticulous/cli@latest
+- method: npm global install (alternative syntax)
+  command: npm install -g @alwaysmeticulous/cli
+- method: npx (no install)
+  command: npx @alwaysmeticulous/cli [command]
+commands:
+- group: auth
+  commands:
+  - auth login
+  - auth login --non-interactive --project="{org}/{proj}"
+  - auth login --device --project="{org}/{proj}"
+  - auth whoami
+  - auth logout
+  - auth get-project
+  - auth set-project
+  - auth set-project --project="{org}/{proj}"
+  - auth list-projects
+- group: agent
+  commands:
+  - agent test-run-for-commit
+  - agent test-run-for-commit --commitSha="<sha>"
+  - agent test-run-for-commit --prNumber=123
+  - agent test-run-for-commit --dontWaitForTestRunToComplete
+  - agent test-run-for-commit --project="{org}/{proj}"
+  - agent test-runs
+  - agent test-runs --prNumber=123
+  - agent test-runs --baseTestRuns
+  - agent test-runs --latestPerPullRequest
+  - agent test-runs --status=Running,Scheduled
+  - agent test-runs --withDiffsOnly
+  - agent test-runs --withCheckIssuesOnly
+  - agent test-runs --checkIds=accessibility
+  - agent test-runs --createdSince="2026-09-01"
+  - agent test-runs --includeBaseTestRunId
+  - agent test-runs --includeDiffCount
+  - agent test-runs --includeCheckIssueCounts
+  - agent test-runs --includeDurationSeconds
+  - agent test-runs --project="{org}/{proj}"
+  - agent test-runs --limit=25 --offset=50
+  - agent test-run-diffs
+  - agent test-run-diffs --testRunId="<id>"
+  - agent test-run-diffs --commitSha="<sha>"
+  - agent test-run-diffs --prNumber=123
+  - agent trigger-test-run
+  - agent trigger-test-run --deploymentId="<id>"
+  - agent trigger-test-run --project="{org}/{proj}"
+  - agent trigger-test-run --deploymentId="<id>" --baseSha="<sha>"
+  - agent trigger-test-run --deploymentId="<id>" --baseSha="<sha>" --gitDiffOutput="<diff>"
+  - agent trigger-test-run --commitSha="<sha>"
+  - agent trigger-test-run --sessionIds="<id1>,<id2>"
+  - agent submit-feedback --message="<one or two sentences>"
+  - agent submit-feedback --message="<…>" --outcome="helped"
+  - agent submit-feedback --message="<…>" --testRunId="<id>"
+  - agent submit-feedback --message="<…>" --skill="meticulous-review"
+  - agent submit-feedback --message="<…>" --agentName="claude-code" --agentModel="<model>"
+- group: ci
+  commands:
+  - ci run-with-tunnel
+  - ci upload-assets
+  - ci upload-asset-chunk
+  - ci run-with-uploaded-asset-chunks
+  - ci upload-container
+  - ci agent-test
+  - ci run-local
+  - ci prepare
+  - ci label-commit
+  - ci start-tunnel
+- group: debug
+  commands:
+  - debug replay
+  - debug replay-diff
+  - debug clean
+- group: schema
+  commands:
+  - schema
+  - schema simulate
+- group: onboard
+  commands:
+  - onboard
+- group: record
+  commands:
+  - record session
+  - record login
+- group: crawl
+  commands:
+  - crawl
+- group: project
+  commands:
+  - project show
+  - project upload-source
+- group: download
+  commands:
+  - download session
+  - download replay
+  - download test-run
+- group: traces
+  commands:
+  - traces upload
+- group: local
+  commands:
+  - local relevant-sessions
+binary: meticulous
+docs: https://app.meticulous.ai/docs/how-to/recorder-developer-tools.md

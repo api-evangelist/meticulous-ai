@@ -1,0 +1,20 @@
+generated: '2026-10-25'
+source: https://www.meticulous.ai/privacy-policy
+method: probed
+signals:
+  data_retention:
+    evidence:
+      - source: https://www.meticulous.ai/privacy-policy
+        http_status: 200
+        fetched: "true"
+        quote: "Meticulous has the right to store all data collected by the Meticulous snippet."
+        section: "Further information about the processing of Personal Data"
+        note: The provider states it may retain all collected data, indicating a data retention policy.
+  consent_requirement:
+    evidence:
+      - source: https://www.meticulous.ai/privacy-policy
+        http_status: 200
+        fetched: "true"
+        quote: "If you are based in a jurisdiction that requires consent of users prior to collecting their data, you must only install our snippet if you have been granted explicit permission from those users."
+        section: "Further information about the processing of Personal Data"
+        note: Indicates that consent is required in certain jurisdictions before data collection.
